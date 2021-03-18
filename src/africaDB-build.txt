@@ -1,0 +1,40 @@
+/* Names: Christian Lussier, Robert Samuel, Jordan Wilson /*
+/* A database builder file; edit as necessary */
+/* To Run build the database, make sure that your CSV data files are found in the data/ directory. */
+
+/* How to run this builder: */
+/* cat africaDB-build.txt | sqlite3 africaDB.sqlite3 */
+
+
+/* Create your tables. Modify the below code to create your tables. */
+
+drop table HPI;
+create table HPI (
+        Rank numeric,
+        Country VARCHAR NOT NULL ,
+        Region VARCHAR NOT NULL,
+        Life Expectancy VARCHAR ,
+        Wellbeing VARCHAR ,
+        Inequality VARCHAR ,
+        Ecological VARCHAR,
+        HPI VARCHAR
+);
+
+drop table Resources;
+drop table DevIndicators;
+drop table RealGDPGrowth;
+
+
+/* Import your data files. Use the below code to populate the tables from above. */
+/* If your data is not separated by tabs, then change the following line to reflect the delimiter. */
+.separator ","
+
+/* find the file and load it into sqlite3 which will create the database.*/
+.import data/hpi-data-2016.csv HPI
+.import data/API_Resource.csv Resources
+.import data/African_Development_Indicators_Data.csv DevIndicators
+.import data/imf-real-gdp-growth.csv RealGDPGrowth
+
+
+/* How to run this builder: */
+/* cat africaDB-build.txt | sqlite3 africaDB.sqlite3 */
